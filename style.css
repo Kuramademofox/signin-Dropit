@@ -1,5 +1,5 @@
 body {
-  font-family: quicksand, sans-serif;
+  font-family: 'Quicksand', sans-serif;
   background-color: #f4f4f4;
   display: flex;
   justify-content: center;
@@ -25,7 +25,7 @@ body {
 }
 
 .signup-form {
-  padding: 20px;
+  padding: 10px;
   flex: 1;
 }
 
@@ -66,26 +66,35 @@ body {
   margin-right: 10px;
 }
 
-  .signup-button {
-    display: inline-block;
-    padding: 15px 30px;
-    font-size: 18px;
-    color: white;
-    background: linear-gradient(to right, #34a853, #6acb7b);
-    border: none;
-    border-radius: 25px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
+.signup-button {
+  width: 404px;
+  height: 32px;
+  padding: 10px;
+  font-size: 18px;
+  color: white;
+  background: linear-gradient(to right, #34a853, #6acb7b);
+  border: none;
+  border-radius: 25px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.signin-text {
+  text-align: center;
+  margin-top: auto; /* Push to the bottom */
+  padding-top: 20px; /* Add padding for spacing */
+  font-size: 14px; /* Slightly smaller font */
+}
+.signup-text {
+  text-align: center;
+  margin-bottom: auto; /* Push to the bottom */
+  padding-top: 20px; /* Add padding for spacing */
+  font-size: 14px; /* Slightly smaller font */
+}
 
-  .signup-button:hover {
-    background: linear-gradient(to right, #6acb7b, #34a853);
-  }
-
-  
-
+.signup-button:hover {
+  background: linear-gradient(to right, #6acb7b, #34a853);
+}
 
 .social-signin {
   display: flex;
@@ -119,3 +128,22 @@ body {
   text-align: center;
 }
 
+/* Style the Verify button */
+#verifyOTP {
+  display: inline-block;
+  padding: 10px;
+  font-size: 18px;
+  color: white;
+  background: linear-gradient(to right, #34a853, #6acb7b);
+  border: none;
+  border-radius: 25px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s;
+   margin-top: 20px; /* Add space above the button */
+}
+
+#verifyOTP:hover {
+  background: linear-gradient(to right, #6acb7b, #34a853);
+}
