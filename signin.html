@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <div class="form-image-wrapper">
-            <form class="signup-form">
+            <form class="signup-form" id="signupForm">
                 <h1>Welcome</h1>
               
                 <div class="merging">
@@ -21,6 +21,7 @@
                 <div class="merging">
                     <label for="password">OTP</label>
                     <input type="password" id="password" placeholder="Enter your OTP" required>
+                    <button type="button" id="verifyOTP">Verify</button>
                 </div>
 
                 <div class="checkbox">
@@ -29,7 +30,7 @@
                 </div>
                 <br>
 
-                <button type="submit" class="signup-button">Sign In</button>
+                <button type="submit" class="signup-button">send OTP</button>
                 <br><br><br><br><br>
 
               
@@ -42,5 +43,33 @@
 
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('signupForm');
+            const verifyOTPButton = document.getElementById('verifyOTP');
+
+            // Form submit event listener
+            form.addEventListener('submit', (event) => {
+                const phone = document.getElementById('phone').value;
+                const password = document.getElementById('password').value;
+                const terms = document.getElementById('terms').checked;
+
+                if (!phone || !password || !terms) {
+                    alert('Please fill in all fields and agree to the terms.');
+                    event.preventDefault(); // Prevent form submission
+                } else {
+                    // Proceed with form submission, e.g., via AJAX
+                    alert('Form submitted successfully!');
+                }
+            });
+
+            // Verify OTP button click event listener
+            verifyOTPButton.addEventListener('click', () => {
+                const otp = document.getElementById('password').value;
+                // Here, you'd typically make an AJAX call to your server to validate the OTP
+                alert('OTP verification functionality is not implemented yet. You would send the OTP to your server here.');
+            });
+        });
+    </script>
 </body>
 </html>
