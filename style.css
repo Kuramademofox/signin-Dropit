@@ -8,6 +8,7 @@ body {
   margin: 0;
 }
 
+
 .container {
   display: flex;
   justify-content: center;
@@ -15,25 +16,37 @@ body {
   width: 80%;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  border-radius: 5px;
   overflow: hidden;
+  margin-top: 150px;
+  margin-left: 198px;
+}
+
+.signup-form {
+  margin-top: 150px; 
+  margin-left: 198px;
+  width: Fixed (404px)px; 
+  height: Fixed (32px)px; 
+  padding: 10px 0px 10px 10px; 
+  gap: 10px; 
+  border-radius: 
+    10px 0px 0px 0px; 
+  border: 1px 0px 0px 0px; 
+  opacity: 0px;
 }
 
 .form-image-wrapper {
   display: flex;
   width: 100%;
-}
-
-.signup-form {
-  padding: 10px;
-  flex: 1;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .image-wrapper {
-  flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+  flex: 1;
 }
 
 .image-wrapper img {
@@ -42,7 +55,7 @@ body {
 }
 
 .merging {
-  margin-bottom: 15px;
+  margin-bottom: 20px; /* Increased space between fields */
 }
 
 .merging label {
@@ -67,7 +80,7 @@ body {
 }
 
 .signup-button {
-  width: 404px;
+  width: 100%;
   height: 32px;
   padding: 10px;
   font-size: 18px;
@@ -79,21 +92,23 @@ body {
   cursor: pointer;
   transition: background 0.3s;
 }
+
+.signup-button:hover {
+  background: linear-gradient(to right, #6acb7b, #34a853);
+}
+
 .signin-text {
   text-align: center;
   margin-top: auto; /* Push to the bottom */
   padding-top: 20px; /* Add padding for spacing */
   font-size: 14px; /* Slightly smaller font */
 }
+
 .signup-text {
   text-align: center;
   margin-bottom: auto; /* Push to the bottom */
   padding-top: 20px; /* Add padding for spacing */
   font-size: 14px; /* Slightly smaller font */
-}
-
-.signup-button:hover {
-  background: linear-gradient(to right, #6acb7b, #34a853);
 }
 
 .social-signin {
@@ -124,11 +139,6 @@ body {
   color: #000;
 }
 
-.signin-text {
-  text-align: center;
-}
-
-/* Style the Verify button */
 #verifyOTP {
   display: inline-block;
   padding: 10px;
@@ -141,9 +151,11 @@ body {
   text-decoration: none;
   cursor: pointer;
   transition: background 0.3s;
-   margin-top: 20px; /* Add space above the button */
+  margin-top: 20px; /* Add space above the button */
 }
 
 #verifyOTP:hover {
   background: linear-gradient(to right, #6acb7b, #34a853);
 }
+#verifyOTP {
+  display: none; /* Hide the OTP button */
