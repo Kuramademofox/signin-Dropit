@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'expired-callback': () => {
             // Response expired. Ask user to solve reCAPTCHA again.
             alert('reCAPTCHA expired. Please try again.');
+            window.recaptchaVerifier.reset(); // Reset reCAPTCHA on expiration
         }
     });
 
@@ -35,6 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const fullPhoneNumber = countryCode + phoneNumber;
         const appVerifier = window.recaptchaVerifier;
 
+        if (!fullPhoneNumber) {
+            alert('Please enter a valid phone number.');
+            return;
+        }
+
         firebase.auth().signInWithPhoneNumber(fullPhoneNumber, appVerifier)
             .then((confirmationResult) => {
                 window.confirmationResult = confirmationResult;
@@ -43,39 +49,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }).catch((error) => {
                 console.error('Error during signInWithPhoneNumber', error);
                 alert(`Error sending OTP: ${error.message}`);
+                window.recaptchaVerifier.reset(); // Reset reCAPTCHA on failure
             });
     });
 
     const signupForm = document.getElementById('signupForm');
     const signinForm = document.getElementById('signinForm');
 
-    if (signupForm) {
-        signupForm.addEventListener('submit', (event) => {
-            event.preventDefault();
-            const otp = document.getElementById('otp').value;
-            window.confirmationResult.confirm(otp).then((result) => {
+    const handleOTPVerification = (event) => {
+        event.preventDefault();
+        const otp = document.getElementById('otp').value;
+
+        if (!otp) {
+            alert('Please enter the OTP.');
+            return;
+        }
+
+        window.confirmationResult.confirm(otp)
+            .then((result) => {
                 const user = result.user;
-                alert('Sign-up successful!');
-                // Redirect to another page or perform other actions
+                alert('Operation successful!');
+                // Redirect or perform other actions
             }).catch((error) => {
                 console.error('Error verifying OTP', error);
                 alert('Error verifying OTP. Please try again.');
             });
-        });
+    };
+
+    if (signupForm) {
+        signupForm.addEventListener('submit', handleOTPVerification);
     }
 
     if (signinForm) {
-        signinForm.addEventListener('submit', (event) => {
-            event.preventDefault();
-            const otp = document.getElementById('otp').value;
-            window.confirmationResult.confirm(otp).then((result) => {
-                const user = result.user;
-                alert('Sign-in successful!');
-                // Redirect to another page or perform other actions
-            }).catch((error) => {
-                console.error('Error verifying OTP', error);
-                alert('Error verifying OTP. Please try again.');
-            });
-        });
+        signinForm.addEventListener('submit', handleOTPVerification);
     }
 });
